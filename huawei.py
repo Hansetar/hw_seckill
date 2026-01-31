@@ -820,7 +820,8 @@ class HuaWei:
         tryTimes = 1
         while self.sec_kill_time is None and tryTimes < constants.RETRY_TIMES:
             try:
-                countdownElements = self.browser.find_elements(By.CSS_SELECTOR, "#prd-detail .css-175oi2r.r-14lw9ot .css-175oi2r.r-14lw9ot.r-18u37iz.r-1wtj0ep .css-175oi2r.r-1wtj0ep .css-146c3p1.r-13uqrnb.r-oxtfae")
+                #countdownElements = self.browser.find_elements(By.CSS_SELECTOR, "#prd-detail .css-175oi2r.r-14lw9ot .css-175oi2r.r-14lw9ot.r-18u37iz.r-1wtj0ep .css-175oi2r.r-1wtj0ep .css-146c3p1.r-13uqrnb.r-oxtfae")
+                countdownElements = self.browser.find_elements(By.CSS_SELECTOR, "#prd-detail [data-testid='vui_text_container']")
                 logger.info("抢购开始时间为：[{}]", countdownElements[3].text)
                 countdownStr = datetime.now().strftime("%Y年") + countdownElements[3].text[5:]
                 self.sec_kill_time = datetime.strptime(countdownStr, "%Y年%m月%d日 %H:%M")
